@@ -120,7 +120,8 @@ def ultima_version() -> tuple[str, str]:
     """Devuelve (sha, mensaje del commit) de la última versión publicada.
 
     Primero pregunta a la API de GitHub; si pide esperar (límite de 60 consultas por hora) o
-    falla, prueba con el feed público de commits (no tiene ese límite).
+    falla, pregunta directo al repositorio git (no tiene ese límite) y saca el mensaje del
+    feed público de commits.
     """
     try:
         return _ultima_por_api()
@@ -128,24 +129,34 @@ def ultima_version() -> tuple[str, str]:
         if "sin internet" in str(ex_api):
             raise
         try:
-            return _ultima_por_feed()
+            return _ultima_sin_api()
         except ErrorActualizacion:
             raise ex_api from None
 
 
-def _ultima_por_feed() -> tuple[str, str]:
-    url = f"https://github.com/{REPO}/commits/{RAMA}.atom"
+def _ultima_sin_api() -> tuple[str, str]:
+    url = f"https://github.com/{REPO}.git/info/refs?service=git-upload-pack"
     try:
-        with pedir(url, TIEMPO_CONSULTA, aceptar="application/atom+xml") as r:
-            texto = r.read(2_000_000).decode("utf-8", "replace")
+        with pedir(url, TIEMPO_CONSULTA, aceptar="*/*") as r:
+            texto = r.read(2_000_000).decode("latin-1")
     except (urllib.error.URLError, TimeoutError, OSError) as ex:
         raise ErrorActualizacion("sin internet o GitHub no responde") from ex
-    entrada = texto.split("<entry>", 1)[1] if "<entry>" in texto else ""
-    m = re.search(r"Grit::Commit/([0-9a-f]{40})", entrada)
+    m = re.search(r"([0-9a-f]{40}) refs/heads/" + re.escape(RAMA) + r"\b", texto)
     if not m:
         raise ErrorActualizacion("GitHub devolvió una respuesta rara")
-    t = re.search(r"<title>\s*(.*?)\s*</title>", entrada, re.DOTALL)
-    return m.group(1), html.unescape(t.group(1)) if t else ""
+    sha, mensaje = m.group(1), ""
+    try:   # el mensaje es solo para mostrarlo; si falla, no pasa nada
+        with pedir(f"https://github.com/{REPO}/commits/{RAMA}.atom", TIEMPO_CONSULTA,
+                   aceptar="application/atom+xml") as r:
+            feed = r.read(2_000_000).decode("utf-8", "replace")
+        for entrada in feed.split("<entry>")[1:]:
+            if sha in entrada:
+                t = re.search(r"<title>\s*(.*?)\s*</title>", entrada, re.DOTALL)
+                mensaje = html.unescape(t.group(1)) if t else ""
+                break
+    except Exception:
+        pass
+    return sha, mensaje
 
 
 def _ultima_por_api() -> tuple[str, str]:
@@ -282,6 +293,8 @@ def aplicar(archivos: dict[str, bytes], trabajo: Path) -> list[str]:
                 continue
             if (rel in EDITABLES and actual is not None and rel in manifiesto_viejo
                     and huella(actual) != manifiesto_viejo[rel]):
+                if huella(contenido) == manifiesto_viejo[rel]:
+                    continue   # lo editaste tú y la versión nueva no lo cambió: nada que hacer
                 nuevo = CARPETA / (rel + ".nuevo")
                 respaldar(nuevo)
                 escribir_atomico(nuevo, contenido)
