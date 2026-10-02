@@ -1,5 +1,9 @@
 # Novedades de Eduardo el Calvo
 
+## 2026-10-02 — Actualizador más resistente
+- Si GitHub limita las consultas, el actualizador revisa el feed público de cambios y descarga
+  directo, así Eduardo se sigue actualizando igual.
+
 ## 2026-10-02 — Actualizaciones automáticas
 - Eduardo ahora se actualiza solo desde GitHub al abrir `iniciar.bat` o `iniciar_con_enlace.bat`.
 - Nuevo `actualizar.bat` para actualizar a mano.
