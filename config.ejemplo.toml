@@ -265,6 +265,48 @@ palabras_quitar = ["quitar", "quitate", "quita"]
 gestos = true
 
 
+[regalos]
+# Eduardo agradece los regalos del LIVE por el nombre de quien los manda.
+# - Los combos (por ejemplo 10 rosas seguidas) se agradecen UNA vez al final, con el total.
+# - Varios regalos pequeños seguidos se juntan en una sola frase (no satura el live).
+# - Los agradecimientos van ANTES que los !Edu normales.
+activar = true
+# Monedas mínimas para que Eduardo diga algo (1 = agradece todo, hasta una rosa).
+minimo_monedas_para_hablar = 1
+# Desde cuántas monedas es una reacción MEDIANA (más emoción + gesto) y GRANDE (baile, brillo de
+# calva y confeti en el avatar). Como referencia: rosa = 1, dona = 30, corgi = 299, galaxia = 1000.
+mediano_desde_monedas = 100
+grande_desde_monedas = 1000
+# Segundos que espera para juntar regalos pequeños en una sola frase.
+juntar_pequenos_segundos = 6
+# Si TikTok no avisa el final de un combo, se da por terminado después de estos segundos.
+fin_de_racha_segundos = 8
+# Cartel del regalo, brillo de calva y confeti en el avatar.
+efectos_en_avatar = true
+
+
+[batalla]
+# "!Edu batalla tacos pizza": batalla del chat por equipos con barra en el avatar.
+# El chat vota escribiendo el nombre del equipo (o 1 / 2). Un voto por persona: si alguien vuelve
+# a votar, cuenta su ÚLTIMO voto (puede cambiarse de equipo). "!Edu batalla parar" la cancela.
+activar = true
+# Duración de cada batalla en segundos.
+duracion_segundos = 60
+# Quién puede empezar/parar batallas: tu cuenta (el usuario de [tiktok]) y estos moderadores
+# (su @usuario de TikTok), por ejemplo: ["@pepito", "@maria_mod"]
+moderadores = []
+# true = también pueden los moderadores que tengas puestos en TikTok.
+moderadores_de_tiktok = true
+# Puntos extra por regalos: cada moneda regalada por alguien que ya votó suma estos puntos a su
+# equipo (0 = los regalos no cuentan; 1 = una rosa vale un voto).
+puntos_por_moneda = 0
+# Eduardo se burla (con cariño) cuando un equipo pasa al frente.
+narrar_cambios_de_lider = true
+espera_entre_burlas_segundos = 12
+palabras = ["batalla", "pelea", "duelo"]
+palabras_parar = ["parar", "stop", "cancelar", "terminar"]
+
+
 [actualizaciones]
 # Cada vez que abres iniciar.bat o iniciar_con_enlace.bat, Eduardo revisa en GitHub si hay
 # una versión nueva y se actualiza solo en unos segundos (sin tocar config.toml, tus claves

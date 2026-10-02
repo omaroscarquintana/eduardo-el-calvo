@@ -72,6 +72,9 @@ class ServidorAvatar:
         self.clave_enlace = clave_enlace or secrets.token_urlsafe(9).replace("-", "a").replace("_", "b")
         self.disfraz_actual = ""
         self._quitar_disfraz: asyncio.TimerHandle | None = None
+        # Capa de efectos (efectos.js): barra de batalla, carteles de regalos, confeti, brillo de calva
+        self.clientes_efectos: list[web.WebSocketResponse] = []
+        self.estado_batalla: dict | None = None   # para las ventanas que se abren a mitad de batalla
 
     # -------------------------------------------------------------- servidor
     @property
@@ -84,10 +87,16 @@ class ServidorAvatar:
         app.router.add_get("/avatar", self._pagina)
         app.router.add_get("/ws", self._websocket)
         app.router.add_get("/audio/{nombre}", self._audio)
+        app.router.add_get("/efectos.js", self._estatico)
+        app.router.add_get("/efectos.css", self._estatico)
+        app.router.add_get("/efectos_ws", self._websocket_efectos)
         # Mismo contenido, con la clave secreta delante (para el enlace público https del túnel)
         app.router.add_get("/e/{clave}/avatar", self._pagina)
         app.router.add_get("/e/{clave}/ws", self._websocket)
         app.router.add_get("/e/{clave}/audio/{nombre}", self._audio)
+        app.router.add_get("/e/{clave}/efectos.js", self._estatico)
+        app.router.add_get("/e/{clave}/efectos.css", self._estatico)
+        app.router.add_get("/e/{clave}/efectos_ws", self._websocket_efectos)
         self._runner = web.AppRunner(app, access_log=None)
         await self._runner.setup()
         try:
@@ -121,17 +130,59 @@ class ServidorAvatar:
         return f"/e/{self.clave_enlace}/avatar"
 
     async def detener(self) -> None:
-        for c in list(self.clientes):
+        for ws in [c.ws for c in self.clientes] + list(self.clientes_efectos):
             try:
-                await c.ws.close()
+                await ws.close()
             except Exception:
                 pass
         if self._runner:
             await self._runner.cleanup()
 
     async def _pagina(self, request: web.Request) -> web.StreamResponse:
-        return web.FileResponse(self.carpeta / "avatar" / "avatar.html",
-                                headers={"Cache-Control": "no-store"})
+        html = (self.carpeta / "avatar" / "avatar.html").read_text(encoding="utf-8")
+        if (self.carpeta / "avatar" / "efectos.js").exists():
+            # La capa de efectos va en archivos aparte (rutas relativas: sirven igual con el enlace público)
+            html = html.replace("</head>", '<link rel="stylesheet" href="efectos.css">\n'
+                                           '<script src="efectos.js" defer></script>\n</head>', 1)
+        return web.Response(text=html, content_type="text/html", headers={"Cache-Control": "no-store"})
+
+    async def _estatico(self, request: web.Request) -> web.StreamResponse:
+        nombre = request.path.rsplit("/", 1)[-1]
+        if nombre not in ("efectos.js", "efectos.css"):
+            raise web.HTTPNotFound()
+        tipo = "application/javascript" if nombre.endswith(".js") else "text/css"
+        return web.FileResponse(self.carpeta / "avatar" / nombre,
+                                headers={"Cache-Control": "no-store", "Content-Type": f"{tipo}; charset=utf-8"})
+
+    async def _websocket_efectos(self, request: web.Request) -> web.StreamResponse:
+        ws = web.WebSocketResponse(heartbeat=20)
+        await ws.prepare(request)
+        self.clientes_efectos.append(ws)
+        if self.estado_batalla:
+            try:
+                await ws.send_str(json.dumps(self.estado_batalla, ensure_ascii=False))
+            except Exception:
+                pass
+        try:
+            async for _ in ws:
+                pass
+        finally:
+            if ws in self.clientes_efectos:
+                self.clientes_efectos.remove(ws)
+        return ws
+
+    async def efecto(self, datos: dict) -> None:
+        """Manda un efecto a la capa de efectos (regalo, batalla, confeti, brillo...)."""
+        if datos.get("tipo") == "batalla":
+            self.estado_batalla = datos if datos.get("estado") == "activa" else None
+        texto = json.dumps(datos, ensure_ascii=False)
+
+        async def mandar(ws: web.WebSocketResponse) -> None:
+            try:
+                await ws.send_str(texto)
+            except Exception:
+                pass
+        await asyncio.gather(*(mandar(ws) for ws in list(self.clientes_efectos)))
 
     async def _audio(self, request: web.Request) -> web.StreamResponse:
         nombre = request.match_info["nombre"]
@@ -264,4 +315,3 @@ class ServidorAvatar:
 
     async def fin_ruleta(self) -> None:
         await self.a_todos({"tipo": "ruleta_fin"})
-
