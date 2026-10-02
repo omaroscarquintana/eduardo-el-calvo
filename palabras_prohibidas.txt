@@ -1,0 +1,93 @@
+# =====================================================================
+#  FILTRO DE SEGURIDAD - Palabras prohibidas (una por línea)
+# =====================================================================
+#  - Si el mensaje del espectador (o su nombre) contiene una de estas palabras,
+#    Eduardo no lo repite. Si la respuesta de la IA contiene una, se descarta.
+#  - Mayúsculas, acentos y trucos como "pvt0" o "puuuuto" se detectan solos.
+#  - Termina una palabra con * para bloquear todo lo que EMPIECE así
+#    (ejemplo: "nazi*" bloquea "nazi", "nazis", "nazismo").
+#  - Puedes agregar las que quieras. Las líneas con # se ignoran.
+# =====================================================================
+
+# Insultos fuertes
+puta*
+puto
+putos
+pendej*
+cabron*
+cabrón*
+verga*
+mierda*
+coño
+chinga*
+chingada*
+gilipollas
+hijueputa*
+hdp
+malparid*
+mamaguevo*
+culero*
+estupid*
+imbecil*
+idiota*
+retrasad*
+mongol*
+subnormal*
+perra
+perras
+zorra*
+fuck*
+shit*
+bitch*
+asshole*
+
+# Odio / discriminación
+maricon*
+marica*
+joto*
+puñal
+sidoso*
+negrata*
+nigga*
+nigger*
+sudaca*
+indio de mierda
+panchit*
+nazi*
+hitler*
+kkk
+faggot*
+retard*
+
+# Contenido sexual
+sexo
+sexual*
+porno*
+xxx
+desnud*
+pack*
+nudes
+onlyfans
+pene*
+vagina*
+tetas
+culo
+violar*
+violacion*
+pedof*
+
+# Violencia, autolesión, drogas
+matate
+mátate
+suicid*
+cortate
+kill yourself
+kys
+matar*
+asesin*
+balear*
+terroris*
+cocaina*
+perico
+marihuana*
+droga*

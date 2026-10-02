@@ -1,0 +1,288 @@
+# =====================================================================
+#  FRASES DE RESPALDO DE "EDUARDO EL CALVO"  (se usan cuando NO hay IA, o si la IA falla)
+# =====================================================================
+#  Con IA, Eduardo contesta de verdad a cada comentario. Sin IA, Eduardo adivina QUÉ
+#  TIPO de comentario es (saludo, pregunta, cumplido, provocación...) y elige una frase
+#  de la sección que corresponde. Puedes agregar, borrar o cambiar frases con el Bloc de notas.
+#  Una frase por línea. Las secciones (la palabra entre corchetes) son:
+#    [saludo]            "hola", "buenas noches", "qué onda"
+#    [despedida]         "me voy", "adiós", "nos vemos"
+#    [cumplido]          "eres el mejor", "te quiero", "me encanta tu calva"
+#    [gracias]           "gracias Edu"
+#    [troll]             provocaciones y burlas suaves ("calvo feo", "cállate", "aburrido")
+#                        (aquí Eduardo SÍ es sarcástico; los insultos fuertes los bloquea el filtro)
+#    [risa]              "jajaja", "xD"
+#    [pregunta_estado]   "¿cómo estás?"
+#    [pregunta_calva]    preguntas sobre su calva o su pelo
+#    [pregunta_edad]     "¿cuántos años tienes?"
+#    [pregunta_origen]   "¿de dónde eres?"
+#    [pregunta_quien]    "¿quién eres?", "¿eres un bot?"
+#    [pregunta_gusto]    "¿te gusta la pizza?"   ({cosa} = "la pizza")
+#    [pregunta_opinion]  "¿qué opinas del fútbol?"  ({cosa} = "fútbol")
+#    [pregunta]          cualquier otra pregunta
+#    [general]           comentarios que no encajan en nada de lo anterior
+#    [nuevo]             para alguien que llama a Eduardo por PRIMERA vez
+#    [regular]           para alguien que ya había llamado a Eduardo antes (memoria)
+#    [chiste]            chistes  (!Edu chiste, o "cuéntame un chiste")
+#    [animal]            imitaciones de animales  (!Edu animal, o "imita un perro")
+#    [ruleta_reto] [ruleta_piropo] [ruleta_burla] [ruleta_chiste] [ruleta_animal]
+#                        lo que dice Eduardo cuando la ruleta (!Edu ruleta) cae en alguien
+#    [disfraz]           cuando se pone un disfraz ({disfraz} = "mi sombrero mexicano")
+#    [quitar_disfraz]    cuando se lo quita (!Edu quitar)
+#    [gesto_baile] [gesto_saludo] [gesto_sorpresa] [gesto_guino] [gesto_enojo] [gesto_triste]
+#                        lo que dice con cada gesto (!Edu baila, !Edu saluda, ...)
+#  Palabras especiales que el bot reemplaza:
+#    {nombre}          nombre del espectador
+#    {mensaje}         lo que escribió después de !Edu
+#    {cosa}            de qué habla en preguntas como "¿te gusta...?" o "¿qué opinas de...?"
+#    {veces}           cuántas veces ha llamado a Eduardo (contando esta)
+#    {ultimo_mensaje}  lo que le dijo a Eduardo la vez anterior
+#    {lives}           en cuántos lives lo ha visto Eduardo
+#    {racha}           cuántos lives seguidos lleva viniendo
+#  Una frase con una palabra especial solo se usa si hay algo con qué llenarla.
+#  Escribe "ja, ja, ja" en una frase y el avatar se reirá con brillo extra.
+#  Si alguien pide un animal concreto ("imita un perro"), se elige una frase con ese sonido.
+#  Sonidos de animales probados con la voz:  ¡Muuuuuuu!  ¡Guau, guau!  ¡Cuac, cuac!
+#  ¡Miauuu!  ¡Kikirikí!  ¡Oinc, oinc!  ¡Croac, croac!  ¡Pío, pío, pío!  ¡Auuuuuu!
+#  ¡Groaaar!  ¡Ji-joo, ji-joo!  ¡Currucucú!  ¡Uuu, uuu!
+# =====================================================================
+
+[saludo]
+¡Hola, {nombre}! ¡Qué alegría verte por aquí! Acomódate, que mi calva ya está encendida.
+¡{nombre}, hola, hola! Llegaste justo a tiempo: acabo de pulirme la calva para ti.
+¡Buenas, {nombre}! ¡Te doy la bienvenida al live más brillante de TikTok, y no lo digo por la luz!
+¡Ey, {nombre}! ¡Qué gusto saludarte! ¿Cómo va tu día? El mío, brillante, como siempre.
+¡Hola, {nombre}! Saluda a todos, que hoy el live viene con buena vibra y calva recién encerada.
+¡{nombre}! ¡Qué bueno que llegaste! Ya se estaba poniendo aburrido sin ti. Bueno, mi calva no, pero yo sí.
+
+[despedida]
+¡Ay, {nombre}, ya te vas! Cuídate mucho y vuelve pronto, que mi calva te va a extrañar.
+¡Chao, {nombre}! Gracias por acompañarnos. ¡Te espero en el próximo live con la calva bien pulida!
+¡Nos vemos, {nombre}! Ve con cuidado, y si de noche te pierdes, busca el brillo de mi calva.
+¡Hasta pronto, {nombre}! ¡Fue un gusto! Deja tu corazoncito antes de irte, ¿eh?
+
+[cumplido]
+¡Ay, {nombre}, me derretiste la calva de ternura! ¡Gracias, corazón, tú también eres lo máximo!
+¡{nombre}, qué bonito lo que me dices! Si pudiera sonrojarme, se me pondría la calva rosadita.
+¡Gracias, {nombre}! Me alegraste el live. Te mando un abrazo y un reflejo de calva con cariño.
+¡{nombre}, me vas a hacer llorar! Bueno, no, que se me empaña la calva. ¡Pero gracias de corazón!
+¡Ay, {nombre}, tú sí sabes cómo hacer brillar a un calvo! ¡Te quiero mucho, de verdad!
+
+[gracias]
+¡De nada, {nombre}! Para eso estamos, para repartir alegría y brillo de calva gratis.
+¡Con mucho gusto, {nombre}! Aquí tienes a tu calvo favorito para lo que necesites.
+¡No hay de qué, {nombre}! Gracias a ti por estar aquí, ¡haces que el live brille más!
+
+[troll]
+¡Ay, {nombre}! Dices eso, pero no dejas de mirar mi calva. Es normal, hipnotiza. ¡Ja, ja, ja!
+¿En serio, {nombre}? Me lo dices tú, que llevas un buen rato aquí. ¡Admítelo, eres mi fan secreto!
+¡{nombre}, qué valiente! Lástima que tu comentario brille menos que mi calva. Inténtalo otra vez.
+¡Uy, {nombre}, me dolió! Mentira, mi calva es antirreflejos para los comentarios pesados. ¡Ja, ja, ja!
+¡{nombre}, gracias por la crítica! La voy a pensar mientras me pulo la calva. Listo, ya la olvidé.
+¡Calma, {nombre}! Respira hondo y mira mi calva, dicen que es muy relajante. ¡De nada!
+¡{nombre}, te noto con envidia! Es que esta calva no se consigue en cualquier lado. ¡Ja, ja, ja!
+¡Ay, {nombre}, tanto esfuerzo para molestarme! Con esa energía podrías pulirme la calva. ¿Te animas?
+
+[risa]
+¡Eso, {nombre}, ríete conmigo! ¡Ja, ja, ja! Tu risa le da más brillo a mi calva.
+¡{nombre} se está riendo! ¡Misión cumplida! ¡Ja, ja, ja!
+¡Ja, ja, ja! ¡{nombre}, esa risa es contagiosa! Ya hasta mi calva está temblando de la risa.
+
+[pregunta_estado]
+¡Súper bien, {nombre}! Con la calva brillando al cien y el corazón contento. ¿Y tú qué tal?
+¡De maravilla, {nombre}! Hoy amanecí tan brillante que el sol me pidió consejos. ¿Tú cómo estás?
+¡Feliz de la vida, {nombre}! Calva pulida, barba peinada y un live lleno de gente bonita. ¿Y tú?
+
+[pregunta_calva]
+¡Buena pregunta, {nombre}! Mi calva no es falta de pelo, es exceso de brillo. ¡Ja, ja, ja!
+¡{nombre}, el pelo se me fue de vacaciones y nunca volvió! Pero mira qué brillo me dejó de regalo.
+¡Ay, {nombre}! Cada mañana la pulo con amor, un poquito de cera y mucha autoestima. ¡Ese es el secreto!
+¡{nombre}, mi calva es así de natural! Ni champú gasto. Lo que ahorro en peluquería lo invierto en brillo.
+
+[pregunta_edad]
+¡{nombre}, tengo la edad perfecta: suficiente para tener barba blanca y muy poca para dejar de bromear!
+¿Mi edad, {nombre}? ¡Secreto de estado! Solo te digo que mi calva ya brillaba antes de que existiera TikTok.
+
+[pregunta_origen]
+¡{nombre}, vivo en la pantalla del live de Omar! Es pequeña, pero con mi calva nunca falta luz.
+¿De dónde soy, {nombre}? ¡Del país de los calvos felices! Queda justo al lado del ring light de Omar.
+
+[pregunta_quien]
+¡Soy Eduardo el Calvo, {nombre}! El compañero virtual de este live: cuento chistes, imito animales y brillo sin parar.
+¡{nombre}, soy un personaje virtual, sí! Pero mi cariño por este chat es de verdad, y mi brillo también.
+¡Hola, {nombre}! Soy Eduardo, el calvo más simpático de TikTok. Escribe !Edu chiste y te lo demuestro.
+
+[pregunta_gusto]
+¿Que si me gusta {cosa}, {nombre}? ¡Me encanta! Casi tanto como pulirme la calva, y eso ya es decir mucho.
+¡{nombre}, {cosa} me fascina! Pero no se lo digas a mi calva, que se pone celosa.
+¿{cosa}? ¡Claro que sí, {nombre}! Todo lo que alegre este live me gusta, y eso me alegra un montón.
+
+[pregunta_opinion]
+¿Que qué opino de {cosa}, {nombre}? ¡Que tiene mi bendición calva! Brilla casi tanto como yo.
+¡{nombre}, sobre {cosa} te digo una cosa: si te hace feliz, a mí también! Y a mi calva ni se diga.
+
+[pregunta]
+¡Buena pregunta, {nombre}! No sé la respuesta exacta, pero mi calva dice que sí, y ella nunca se equivoca. ¡Ja, ja, ja!
+¡Uy, {nombre}, esa pregunta está difícil! Déjame pensarla mientras me pulo la calva. Omar, ¿tú qué dices?
+¡{nombre}, me pillaste! Esa no la sé, pero te cuento un chiste si escribes !Edu chiste. ¡Trato hecho!
+¡Ay, {nombre}! Para esa pregunta necesito más cerebro y menos brillo. ¡Que te conteste el chat!
+
+[general]
+¡{nombre}! Leí "{mensaje}" y me brilló la calva de la emoción. ¡Bueno, siempre brilla, pero hoy más!
+¿"{mensaje}"? ¡Ay, {nombre}, qué ternura! Ven, que te doy un abrazo y un reflejo de calva gratis.
+¡{nombre}, con ese "{mensaje}" me hiciste pulirme la calva otra vez! ¡Y valió la pena!
+"{mensaje}", dice {nombre}. ¡Te quiero mucho, pero mi calva tiene mejores ideas, y eso que solo refleja la luz!
+¡{nombre}, tu "{mensaje}" casi brilla tanto como mi calva! Casi, ¿eh? ¡Sigue practicando, que vas bien!
+¡Uy, qué interesante lo de "{mensaje}", {nombre}! Lo voy a pensar mientras me encero la cabeza.
+¡{nombre}, después de leer "{mensaje}" mi calva mandó una señal que se vio desde la Luna! ¡Ja, ja, ja!
+¿Que "{mensaje}"? ¡{nombre}, eso es tan profundo como el pelo que me queda: nada de nada!
+"{mensaje}"... ¡{nombre}, te respondería en serio, pero estoy ocupadísimo brillando!
+¡{nombre}, "{mensaje}" suena a algo que diría alguien con pelo! Te perdono porque me caes súper bien.
+¡{nombre}, lo de "{mensaje}" no lo pude leer bien, el reflejo de mi calva me tapó la pantalla!
+¿"{mensaje}", {nombre}? ¡Te doy un nueve! El diez es solo para mi calva, ¡ya sabes!
+¡{nombre}, "{mensaje}" es la segunda cosa más brillante del LIVE! ¡La primera ya sabes cuál es!
+¡{nombre}, me encanta tu "{mensaje}"! Me dio tanta risa que se me empañó la calva. ¡Ja, ja, ja!
+¿Qué pasó, {nombre}? ¡Estaba ocupado brillando más que el ring light de Omar!
+¡Aquí estoy, {nombre}! No hace falta encender la luz, ¡mi calva ya ilumina todo el LIVE!
+¡{nombre}, me interrumpiste mientras me encerabas la cabeza! Pero por ti, lo que sea, ¡corazón!
+¡Hola, {nombre}! Sí, eso que te encandila es mi calva. ¡De nada, es un regalo!
+¡{nombre}, invocaste a Eduardo el Calvo! Advertencia: ¡puede causar ceguera temporal por brillo!
+¡{nombre}, si tienes frío acércate a mi calva, que refleja el sol hasta de noche!
+¡Presente, {nombre}! Calva pulida, sonrisa puesta y cero pelos en la lengua. ¡Ni en la cabeza!
+¡{nombre}, saluda al ring light, que hoy le estoy ganando por goleada!
+¡{nombre}, me llamaste y vine volando! Bueno, rodando, ¡porque mi calva es muy aerodinámica!
+¡{nombre}! ¡Qué gusto! Ponte lentes de sol, que vengo con la calva recién encerada.
+
+[nuevo]
+¡Qué alegría, {nombre}! Primera vez que me hablas, así que te regalo el brillo de mi calva. ¡Úsalo con cuidado!
+¡Ay, alguien nuevo! ¡Hola, {nombre}, soy Eduardo el Calvo! Sí, brillo así de natural. ¡Ja, ja, ja!
+¡{nombre}, es la primera vez que me llamas y ya te quiero! ¡Ya eres del club de los deslumbrados por mi calva!
+¡Hola, {nombre}! Te doy la bienvenida oficial: un abrazo, un chiste malo y un reflejo de calva directo a los ojos.
+¡Mira quién llegó: {nombre}! Primera visita, así que hoy te trato bonito. ¡Mañana ya te roasteo!
+¡{nombre}, te doy la bienvenida! Regla número uno: nadie brilla más que mi calva. Regla número dos: ¡pásala increíble!
+¡Uy, cara nueva! ¡Hola, {nombre}! Tranquilidad, esa luz no es el sol, ¡es mi calva saludándote!
+¡{nombre}, primera vez por aquí! Te advierto que mi calva es contagiosa... ¡de buena vibra!
+
+[regular]
+¡Otra vez tú, {nombre}! ¡Ya van {veces} veces que me llamas! A ti te gusta mi calva, ¿verdad?
+¡{nombre}, ya van {veces} veces! ¡Te voy a cobrar renta por usar el brillo de mi calva!
+¡{nombre}, mi fan número uno! ¡{veces} veces llamándome! Mi calva ya te reconoce de lejos.
+¿Otra vez, {nombre}? ¡La última vez me dijiste "{ultimo_mensaje}" y todavía me estoy riendo! ¡Ja, ja, ja!
+¡{nombre}, me acuerdo de ti! Me dijiste "{ultimo_mensaje}". ¡Mi calva no olvida, solo brilla!
+¡Ay, {nombre}! Primero "{ultimo_mensaje}" y ahora esto. ¡Eres un caso, pero un caso bonito!
+¡{nombre}, ya llevas {racha} lives seguidos viniendo! ¡Eso es amor verdadero por mi calva!
+¡{nombre} volvió! ¡{lives} lives conmigo! A este paso te regalo una franela para pulirme la cabeza.
+¡{nombre}, {veces} veces me has llamado! Ya eres de la familia, pero la calva no te la presto, ¿eh?
+¡Mira quién volvió! ¡{nombre}, te extrañaba! Bueno, mi calva te extrañaba, yo solo un poquito.
+
+[chiste]
+¡{nombre}, ahí te va un chiste! ¿Por qué yo nunca gano a las escondidas? ¡Porque mi calva me delata desde lejos! ¡Ja, ja, ja!
+¡{nombre}, escucha esto! ¿Qué le dijo un calvo a otro calvo? ¡Cuánto tiempo sin vernos el pelo! ¡Ja, ja, ja!
+¡Un chiste para ti, {nombre}! Voy al peluquero y no me cobra por cortar, me cobra por buscar. ¡Ja, ja, ja!
+¡{nombre}! ¿Qué hace una abeja en el gimnasio? ¡Zumba! ¡Ja, ja, ja! Ay, qué bueno soy.
+¡{nombre}! ¿Qué le dice un pez a otro pez? ¡Nada! ¡Ja, ja, ja! No te rías tanto, que te atragantas.
+¡{nombre}! ¿Cuál es el café más peligroso del mundo? ¡El ex-preso! ¡Ja, ja, ja!
+¡{nombre}! ¿Qué le dijo un semáforo a otro? ¡No me mires, que me estoy cambiando! ¡Ja, ja, ja!
+¡{nombre}! ¿Por qué el libro de matemáticas está triste? ¡Porque tiene muchos problemas! Yo solo tengo uno: brillar demasiado. ¡Ja, ja, ja!
+¡{nombre}! ¿Qué le pasa a una vaca en un terremoto? ¡Que da leche batida! ¡Muuuuuuu! ¡Ja, ja, ja!
+¡Ahí te va, {nombre}! Me compré un champú buenísimo... y ahora no sé qué hacer con él. ¡Ja, ja, ja!
+¡{nombre}! ¿Qué le dijo el sol a mi calva? ¡Por fin alguien que me hace competencia! ¡Ja, ja, ja!
+¡{nombre}! ¿Qué le dice una iguana a su hermana gemela? ¡Somos iguanitas! ¡Ja, ja, ja!
+¡{nombre}! ¿Por qué las focas miran siempre hacia arriba? ¡Porque ahí están los focos! ¡Ja, ja, ja!
+¡{nombre}! ¿Qué le dijo un pato a otro pato? ¡Estamos empatados! ¡Cuac, cuac! ¡Ja, ja, ja!
+¡{nombre}! Mi peine se jubiló hace diez años y todavía cobra pensión. ¡Ja, ja, ja!
+¡{nombre}! ¿Sabes por qué mi calva nunca está triste? ¡Porque siempre tiene un brillo de esperanza! ¡Ja, ja, ja!
+
+[animal]
+¡{nombre}! Te imito a una vaca con calva: ¡Muuuuuuu! ¡Igualita!
+¡Para ti, {nombre}, un perrito feliz! ¡Guau, guau! ¡Y ahora mueve la colita en el chat!
+¡{nombre}, modo pato activado! ¡Cuac, cuac! Lo único que no tengo son plumas. ¡Ni pelo!
+¡{nombre}, este gatito te saluda! ¡Miauuu! ¡Ronroneo y brillo al mismo tiempo, soy multitarea!
+¡Kikirikí! ¡{nombre}, soy un gallo calvo despertando a todo el LIVE con mi brillo!
+¡{nombre}! Te presento al cerdito más elegante del LIVE: ¡Oinc, oinc! ¡Con la calva rosadita y todo!
+¡{nombre}, una rana con estilo! ¡Croac, croac! ¡Brinco y brillo, brinco y brillo!
+¡{nombre}! Un pollito recién nacido, igual de calvito que yo: ¡Pío, pío, pío!
+¡{nombre}! A la luz de mi calva aúllan los lobos: ¡Auuuuuu! ¡Se creen que soy la luna llena!
+¡{nombre}, soy el rey de la selva, pero sin melena! ¡Groaaar! ¡Un león calvo, pero con estilo!
+¡{nombre}, un burrito simpático para ti! ¡Ji-joo, ji-joo! ¡No te rías, que es mi primo!
+¡{nombre}, una palomita romántica para ti! ¡Currucucú! ¡Se enamoró del reflejo de mi calva!
+¡{nombre}! Un búho sabio te dice: ¡Uuu, uuu! Que traducido es: ¡qué calva tan hermosa!
+¡{nombre}! Te imito a una vaca y a un pato juntos: ¡Muuuuuuu! ¡Cuac, cuac! ¡Soy una granja entera!
+
+# ------------------------------------------------------------- RULETA (!Edu ruleta)
+# {nombre} = la persona que eligió la ruleta. Retos SIEMPRE seguros y para hacer en el chat.
+[ruleta_reto]
+¡La ruleta habló! {nombre}, tu reto: escribe en el chat tres emojis que describan mi calva. ¡Tienes un minuto!
+¡Te tocó un reto, {nombre}! Escribe un trabalenguas en el chat sin equivocarte. ¡Tres tristes tigres te esperan!
+¡Uy, {nombre}, reto para ti! Escribe tu comida favorita al revés y que el chat adivine cuál es.
+¡Reto, {nombre}! Inventa un nombre artístico para mi calva y escríbelo en el chat. ¡El mejor gana mi admiración!
+¡{nombre}, la ruleta dice reto! Escribe un piropo para mi calva, pero que sea de poeta. ¡A ver esa inspiración!
+¡Mira nada más, {nombre}! Tu reto: escribe una canción de una sola línea sobre calvos. ¡Que rime, eh!
+
+[ruleta_piropo]
+¡La ruleta habló, {nombre}! Si fueras una calva, serías la más brillante del universo. ¡Y eso que yo compito!
+¡Piropo calvo para {nombre}! Tienes más brillo que mi cabeza recién pulida. ¡Y eso ya es decir mucho!
+¡{nombre}, te tocó piropo! Eres como mi calva: única, encantadora y sin nada que esconder.
+¡Uy, {nombre}! ¿Te dolió cuando caíste del cielo? Porque mi calva te vio brillar desde aquí.
+¡Piropo calvo, {nombre}! Contigo en el live, hasta el ring light se pone celoso.
+
+[ruleta_burla]
+¡La ruleta habló, {nombre}! Escribes tan rápido que mi calva se calienta de leerte. ¡Bájale tantito!
+¡Burla amistosa para {nombre}! Siempre llegas al live más puntual que mi peluquero, y eso que yo no tengo peluquero.
+¡Uy, {nombre}! Dicen que estás tanto en el live que ya te cobro renta. ¡Pero con cariño, eh!
+¡{nombre}, te tocó burla! Ríes más fuerte que mis chistes, y mis chistes son malísimos. ¡Así te quiero!
+¡La ruleta dice burla amistosa, {nombre}! Comentas tanto que el chat ya te nombró alcalde. ¡Felicidades, señor alcalde!
+
+[ruleta_chiste]
+¡Chiste dedicado para {nombre}! ¿Qué hace un calvo en una fiesta? ¡Brilla como bola de disco! ¡Ja, ja, ja!
+¡La ruleta habló, {nombre}! ¿Por qué el libro de matemáticas está triste? ¡Porque tiene muchos problemas! ¡Ja, ja, ja!
+¡Para ti, {nombre}! ¿Cuál es el colmo de un calvo? ¡Tener ideas descabelladas! ¡Ja, ja, ja!
+¡{nombre}, este chiste es tuyo! ¿Qué le dijo una impresora a otra? ¿Esa hoja es tuya o es impresión mía? ¡Ja, ja, ja!
+
+[ruleta_animal]
+¡La ruleta habló, {nombre}! Este gallo es para ti: ¡Kikirikí! ¡Despierta, que el live está buenísimo!
+¡Imitación dedicada a {nombre}! Un lobo aullándole a mi calva: ¡Auuuuuu! Creyó que era la luna.
+¡{nombre}, te dedico una vaca! ¡Muuuuuuu! Dice que te manda saludos desde el rancho.
+¡Para ti, {nombre}, un león con mucho estilo! ¡Groaaar! Bueno, un león calvo, pero con estilo.
+¡{nombre}, aquí va tu pato personal! ¡Cuac, cuac! Dice que eres su persona favorita del chat.
+
+# ------------------------------------------------------ DISFRACES (!Edu disfraz)
+# {nombre} = quien lo pidió, {disfraz} = el disfraz ("mi sombrero mexicano", "mis lentes de sol"...)
+[disfraz]
+¡Gracias, {nombre}! Mírenme con {disfraz}. ¿A poco no me veo guapísimo?
+¡Uy, {nombre}, qué buen gusto! Con {disfraz} la calva se siente de gala.
+¡Listo, {nombre}! Ya me puse {disfraz}. ¡Que alguien me tome una foto!
+¡{nombre}, me encanta! Con {disfraz} mi calva brilla todavía más.
+
+[quitar_disfraz]
+¡Listo, {nombre}! Vuelvo a mi estilo natural: calva al aire y brillando.
+¡Me lo quito, {nombre}! Mi calva necesitaba respirar un poquito.
+¡Ya está, {nombre}! Sin disfraz, pero con el mismo brillo de siempre.
+
+# --------------------------------------------------------- GESTOS (!Edu baila...)
+[gesto_baile]
+¡Ándale, {nombre}! ¡Mira estos pasos! Mi calva también baila, nomás que brillando.
+¡Música, maestro! {nombre}, este baile va dedicado para ti.
+¡Uy, {nombre}, me pusiste a bailar! Cuidado, que mi calva deslumbra en la pista.
+
+[gesto_saludo]
+¡Hola, hola, {nombre}! Te saludo con la mano y con un reflejo de mi calva.
+¡Un saludo enorme para ti, {nombre}! ¡Qué bueno que estás aquí!
+¡{nombre}, hola! Te mando un saludo brillante desde mi calva.
+
+[gesto_sorpresa]
+¡No puede ser, {nombre}! ¡Me dejaste con la boca abierta y la calva temblando!
+¡Uy, {nombre}! ¿En serio? ¡Qué sorpresa tan grande!
+
+[gesto_guino]
+¡{nombre}, te guiño el ojo! Tú y yo sabemos que este es el mejor live.
+¡Guiño para {nombre}! Es nuestro secreto, ¿eh?
+
+[gesto_enojo]
+¡{nombre}, estoy furioso! Bueno, no, era broma. Mi calva no sabe enojarse.
+¡Ay, {nombre}! Me quise enojar, pero mi calva no sabe estar seria.
+
+[gesto_triste]
+¡Ay, {nombre}, qué tristeza tan grande! Bueno, ya se me pasó. ¡Soy un actor de telenovela!
+¡Buaa, {nombre}! Lloro de emoción. Mi calva también está conmovida.
+

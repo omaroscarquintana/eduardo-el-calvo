@@ -1,0 +1,273 @@
+# =====================================================================
+#  CONFIGURACIÓN DE "EDUARDO EL CALVO" - Bot simpático y sarcástico para TikTok LIVE
+# =====================================================================
+#  - Las líneas que empiezan con # son comentarios (el bot las ignora).
+#  - Los textos van SIEMPRE entre comillas: "así".  true = sí, false = no.
+#  - Después de cambiar algo, guarda el archivo y vuelve a abrir el bot.
+#
+#  OJO: este archivo (config.ejemplo.toml) es la configuración DE FÁBRICA y se
+#  reemplaza con cada actualización. TUS ajustes van en "config.toml" (se crea solo
+#  la primera vez copiando este archivo). Las actualizaciones NUNCA tocan config.toml:
+#  si sale una opción nueva, se agrega sola al final de su sección.
+# =====================================================================
+
+[tiktok]
+# Tu usuario de TikTok (con o sin @). El bot se conecta al LIVE de esta cuenta.
+usuario = "@tu_usuario_aqui"
+
+# Cada cuántos segundos vuelve a intentar conectarse si todavía no estás en LIVE.
+reintentar_cada_segundos = 30
+
+# (Opcional) Clave de Euler Stream. La conexión a TikTok pasa por un "servidor de
+# firmas" gratuito de Euler Stream que tiene un límite de uso. Normalmente NO hace
+# falta. Si ves errores de "límite" (rate limit), crea una cuenta gratis en
+# https://www.eulerstream.com, genera una clave y pégala aquí.
+clave_euler_stream = ""
+
+
+[comando]
+# Palabras que activan a Eduardo. El mensaje del chat debe EMPEZAR con una de ellas.
+# No importan mayúsculas/minúsculas: "!Edu", "!edu" y "!EDU" funcionan igual.
+# "!Eduardo" NO activa al bot (a menos que lo agregues aquí).
+# Puedes agregar más separándolas con comas, por ejemplo: ["!Edu", "!Eduardo", "!calvo"]
+activadores = ["!Edu"]
+
+# Sub-comandos: si después de !Edu viene una de estas palabras, Eduardo hace algo especial.
+#   !Edu chiste  -> cuenta un chiste          !Edu animal -> imita a un animal
+palabras_chiste = ["chiste", "chistes", "broma", "bromas"]
+palabras_animal = ["animal", "animales", "imita", "imitacion", "imitación"]
+
+
+[limites]
+# Segundos que debe esperar UNA MISMA persona antes de volver a usar el comando.
+espera_por_usuario_segundos = 60
+
+# Segundos mínimos entre dos respuestas cualesquiera (para todo el chat).
+espera_global_segundos = 8
+
+# Máximo de respuestas esperando turno. Si hay más, las nuevas se ignoran.
+cola_maxima = 5
+
+# Largo máximo de cada respuesta (en letras). Respuestas más largas se recortan.
+largo_maximo_respuesta = 260
+
+# Cuántas letras del mensaje del espectador puede "citar" Eduardo como máximo.
+largo_maximo_cita = 60
+
+
+[seguridad]
+# Si alguien escribe algo ofensivo con el comando, Eduardo NO repite su mensaje.
+# true  = Eduardo lo esquiva con una frase segura (sin citar lo que escribió).
+# false = Eduardo lo ignora en silencio.
+responder_a_mensajes_bloqueados = true
+
+# Ignorar mensajes que contengan enlaces (http, www, .com...).
+bloquear_enlaces = true
+
+
+[voz]
+# Voz de Microsoft Edge (gratis, necesita internet). Voces de hombre recomendadas
+# (medidas en pruebas: las de arriba son las más graves y con más vida al hablar):
+#   "es-US-AlonsoNeural"  (latino neutro - grave, alegre y muy clara: la de fábrica)
+#   "es-DO-EmilioNeural"  (Rep. Dominicana - la más grave de todas, muy expresiva)
+#   "es-MX-JorgeNeural"   (México - grave y cálida)
+#   "es-PR-VictorNeural"  (Puerto Rico)     "es-CO-GonzaloNeural" (Colombia)
+#   "es-AR-TomasNeural"   (Argentina)       "es-ES-AlvaroNeural"  (España, más aguda)
+# Para ver TODAS las voces: abre "listar_voces.bat"
+nombre_voz = "es-US-AlonsoNeural"
+
+# Velocidad: "+0%" normal. "+2%" = un pelín más rápida y con más energía (la de fábrica).
+# "-10%" más lenta, "+10%" bastante rápida.
+velocidad = "+2%"
+
+# Tono: "-4Hz" = un poco más grave y "gruesa" (la de fábrica). "+0Hz" normal,
+# "-8Hz" todavía más grave. No recomiendo subirlo (+Hz): suena más infantil y robótica.
+tono = "-4Hz"
+
+# Pausas naturales: Eduardo genera cada frase por separado y las une con una pausa corta,
+# como cuando una persona respira entre frases (la voz de Edge sola deja ~1 segundo
+# entre frases, que suena entrecortado). true = activado (recomendado).
+pausas_naturales = true
+
+# Duración base de la pausa entre frases, en milisegundos. Con 240 las pausas quedan
+# entre ~0.35 y ~0.45 segundos (las preguntas un poquito más). Más pausa: 320. Menos: 180.
+pausa_entre_frases_ms = 240
+
+# Volumen de la voz: "+0%" normal, "-20%" más bajo, "+20%" más alto.
+volumen = "+0%"
+
+# Si la voz de Edge falla (por ejemplo sin internet), usar la voz de Windows.
+usar_voz_de_windows_si_falla = true
+
+# Preparar el texto para hablar: quita emojis, lee números con letras ("20" -> "veinte"),
+# abreviaturas del chat ("xq" -> "porque") y palabras en inglés como se pronuncian. true = recomendado.
+preparar_texto = true
+
+# Risas de verdad: cuando Eduardo se ríe ("jaja", "¡Ja, ja, ja!") suena una carcajada GRABADA
+# (carpeta "sonidos", grabaciones libres CC0) en vez de la voz leyendo "ja ja ja".
+risas_grabadas = true
+
+# ---- Voz con más emoción (OPCIONAL) ----
+# LO MÁS FÁCIL: doble clic en "configurar_voz.bat" (guarda la clave en voz_local.toml, que manda
+# sobre lo de aquí abajo). Si algo falla, Eduardo usa automáticamente la voz gratis de Edge.
+#   "edge"       -> gratis, sin clave (la de siempre).
+#   "azure"      -> Azure Speech: GRATIS 500.000 letras al mes (plan Free F0), voz con estilo ALEGRE.
+#                   Pide tarjeta solo para verificar identidad. (RECOMENDADO si quieres más emoción)
+#   "elevenlabs" -> la más natural (se ríe de verdad), gratis solo 10.000 letras al mes,
+#                   uso NO comercial y dando crédito. Para lives con ingresos: plan Starter.
+proveedor = "edge"
+
+# Azure: voz y estilo. Voces de hombre con estilos: "es-MX-JorgeNeural" (cheerful, chat, excited...).
+azure_voz = "es-MX-JorgeNeural"
+azure_estilo = "cheerful"        # "cheerful" alegre, "chat" conversación, "excited" emocionado, "" sin estilo
+azure_intensidad = 1.3           # 0.5 suave ... 2.0 exagerado
+azure_velocidad = "+0%"
+azure_tono = "-3%"
+azure_region = ""                # lo pone configurar_voz.bat (ej. "eastus")
+
+# ElevenLabs: el Voice ID lo pone configurar_voz.bat. "eleven_v3" = el más expresivo (risa real).
+elevenlabs_voz_id = ""
+elevenlabs_modelo = "eleven_v3"
+
+# Decir el nombre del espectador antes de la respuesta (ej: "Juan: ...").
+# false = solo dice la respuesta (que normalmente ya incluye el nombre).
+leer_nombre_antes = false
+
+
+[memoria]
+# Eduardo recuerda a los espectadores entre lives (en el archivo memoria.json, SOLO en tu PC):
+# cuántas veces lo han llamado, en cuántos lives han estado, y sus últimos mensajes.
+activar = true
+
+# Recordar también a quien escribe en el chat sin usar !Edu (solo nombre y cuántos mensajes).
+recordar_chat_sin_comando = true
+
+# Cuántos mensajes y respuestas guardar por espectador (los más recientes).
+max_historial = 5
+
+# Máximo de espectadores guardados. Si se pasa, se olvidan los que hace más tiempo no vienen.
+max_espectadores = 5000
+
+# Archivo donde se guarda. Para borrar la memoria usa "borrar_memoria.bat".
+archivo = "memoria.json"
+
+
+[avatar]
+# Avatar animado de Eduardo (página web). Dirección en esta PC: http://localhost:8765/avatar
+# Para LIVE Studio usa iniciar_con_enlace.bat (enlace https) o abrir_avatar_ventana.bat (ver README).
+activar = true
+puerto = 8765
+
+# Mostrar una burbuja con el texto de lo que dice Eduardo.
+burbuja = true
+
+# ¿Quién reproduce el SONIDO de Eduardo?
+#   "auto" = si el avatar está abierto (en LIVE Studio) suena desde el avatar; si no, desde la PC.
+#   "pc"   = siempre suena desde la PC (el avatar solo mueve la boca, sin sonido).
+# Nunca suena doble: o suena el avatar, o suena la PC.
+modo_audio = "auto"
+
+# ENLACE PÚBLICO para LIVE Studio. LIVE Studio NO acepta "http://localhost..." en la fuente
+# "Enlace": necesita una dirección https de internet. Con true (o abriendo iniciar_con_enlace.bat)
+# Eduardo crea un enlace GRATIS de Cloudflare (https://algo.trycloudflare.com/e/CLAVE/avatar).
+# OJO: el enlace cambia cada vez que abres Eduardo (hay que volver a pegarlo en LIVE Studio).
+enlace_publico = false
+# Clave secreta del enlace (déjala vacía para que se invente una nueva cada vez).
+clave_enlace = ""
+
+
+[ia]
+# Inteligencia artificial = RECOMENDADO. Con IA, Eduardo entiende lo que te escriben y
+# contesta DE VERDAD a cada comentario, recordando la conversación del live.
+# Sin IA, usa frases de "respuestas.txt" elegidas según el tipo de comentario (saludo,
+# pregunta, cumplido, provocación...): funciona, pero no puede contestar cualquier cosa.
+#
+# LO MÁS FÁCIL: doble clic en "configurar_ia.bat", pega tu clave gratis y listo.
+# (La clave se guarda en "ia_local.toml" y manda sobre el proveedor de aquí abajo. No lo compartas.)
+#
+# Hay opciones GRATIS (ver README, sección "Respuestas con Inteligencia Artificial"):
+#   "groq"       -> GRATIS, sin tarjeta, muy rápido. configurar_ia.bat opción 1 (o variable GROQ_API_KEY) (RECOMENDADO)
+#   "gemini"     -> GRATIS (Google AI Studio).        configurar_ia.bat opción 2 (o variable GEMINI_API_KEY)
+#   "openrouter" -> modelos gratis, pocas respuestas al día. Clave en OPENROUTER_API_KEY
+#   "openai"     -> de pago.                           Clave en la variable OPENAI_API_KEY
+#   "ollama"     -> gratis en tu propia PC (necesita una PC potente), sin clave.
+#   "otro"       -> cualquier servicio compatible con OpenAI (usa url_base y modelo de abajo).
+proveedor = "groq"
+
+# true = usar la IA si hay clave (si no hay clave, usa las frases sin problema).
+activar = true
+
+# Modelo. Déjalo vacío ("") para usar el recomendado de cada proveedor:
+#   groq: "openai/gpt-oss-120b"   gemini: "gemini-flash-latest"   openrouter: "openrouter/free"
+#   openai: "gpt-4o-mini"         ollama: "llama3.1"
+modelo = ""
+
+# Clave de API. Mejor NO escribirla aquí: usa configurar_ia.bat (o una variable de entorno).
+# Si la escribes aquí, no compartas este archivo.
+clave_api = ""
+
+# Solo para proveedor = "otro": dirección del servicio compatible con OpenAI.
+url_base = ""
+
+# Cuántos mensajes recientes del chat ve la IA para entender la conversación (0 = ninguno).
+contexto_chat_mensajes = 8
+
+# Creatividad (0.0 = serio y repetitivo, 1.2 = muy loco). Recomendado: 0.9
+temperatura = 0.9
+
+# Segundos máximos esperando a la IA. Si tarda más, se usa una frase de respuestas.txt
+tiempo_maximo_segundos = 10
+
+# Archivo con la personalidad de Eduardo (puedes editarlo con el Bloc de notas).
+archivo_personalidad = "personalidad.txt"
+
+
+[archivos]
+# Frases de respaldo por secciones (general, nuevo, regular, chiste, animal).
+archivo_respuestas = "respuestas.txt"
+
+# Lista de palabras prohibidas para el filtro de seguridad (una por línea).
+archivo_palabras_prohibidas = "palabras_prohibidas.txt"
+
+# Guardar los audios generados en la carpeta "audios" (útil para probar).
+# false = se borran después de reproducirse.
+conservar_audios = false
+
+
+[ruleta]
+# "!Edu ruleta": gira una ruleta en el avatar, elige a alguien que escribió en el chat hace poco
+# y le toca una categoría. Eduardo lo anuncia con su voz.
+activar = true
+# Palabras que la activan (después de !Edu)
+palabras = ["ruleta", "gira", "girar"]
+# Segundos que descansa la ruleta entre una y otra (para todo el chat)
+espera_segundos = 90
+# No elegir a la persona que pidió la ruleta (si hay otras personas activas)
+excluir_quien_pide = true
+# Solo entran quienes escribieron en los últimos X minutos
+ventana_minutos = 10
+# Categorías posibles: "reto", "piropo", "burla", "chiste", "animal"  (quita las que no quieras)
+categorias = ["reto", "piropo", "burla", "chiste", "animal"]
+# Probabilidad de cada una (más número = sale más seguido; 0 = nunca)
+pesos = { reto = 1, piropo = 1, burla = 1, chiste = 1, animal = 1 }
+
+
+[disfraces]
+# "!Edu disfraz sombrero" (o solo "!Edu disfraz" para uno al azar) y "!Edu quitar".
+# Disfraces: fiesta, sombrero, lentes, corona, peluca, bigote, gorra, santa
+activar = true
+# Minutos que dura puesto un disfraz (0 = hasta que alguien escriba !Edu quitar)
+duracion_minutos = 10
+palabras_disfraz = ["disfraz", "disfrazate", "ponte"]
+palabras_quitar = ["quitar", "quitate", "quita"]
+# Gestos: "!Edu baila", "saluda", "sorpresa", "guiña", "enójate", "triste".
+# La IA también los usa sola cuando encajan (escribe [gesto:sorpresa] y el bot lo quita de la voz).
+gestos = true
+
+
+[actualizaciones]
+# Cada vez que abres iniciar.bat o iniciar_con_enlace.bat, Eduardo revisa en GitHub si hay
+# una versión nueva y se actualiza solo en unos segundos (sin tocar config.toml, tus claves
+# ni su memoria). false = no buscar actualizaciones al iniciar (puedes actualizar a mano
+# con "actualizar.bat" cuando quieras).
+automaticas = true

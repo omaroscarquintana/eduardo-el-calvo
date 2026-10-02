@@ -1,0 +1,23 @@
+RISAS DE EDUARDO - origen y licencia
+====================================
+Todas son grabaciones reales de personas, publicadas en Freesound.org con licencia
+Creative Commons 0 (CC0 1.0, dominio público): se pueden usar, modificar y usar en
+streams (incluso con fines comerciales) sin pedir permiso ni dar crédito.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Para Eduardo se recortaron, se bajó un poco el tono de algunas (risa_2 y risa_3),
+se igualó el volumen (-21 LUFS) y se convirtieron a MP3 24 kHz mono.
+
+risa_1.mp3  <- "Laughing (male)" por dastudiospr
+               https://freesound.org/people/dastudiospr/sounds/529818/
+risa_2.mp3  <- "Male Laugh" por cchenail (fragmento 7,0 - 8,3 s)
+               https://freesound.org/people/cchenail/sounds/611480/
+risa_3.mp3  <- "Male Laugh" por cchenail (fragmento 22,4 - 23,8 s)
+               https://freesound.org/people/cchenail/sounds/611480/
+risa_4.mp3  <- "Man laughing various" por SPAudiobooks (fragmento 7,8 - 10,7 s)
+               https://freesound.org/people/SPAudiobooks/sounds/859265/
+risa_5.mp3  <- "Man laughing various" por SPAudiobooks (fragmento 11,3 - 14,2 s)
+               https://freesound.org/people/SPAudiobooks/sounds/859265/
+
+Puedes cambiar estas risas por otras tuyas: deben llamarse risa_<algo>.mp3 y estar
+en MP3 24 kHz, 48 kbps, mono (si no, Eduardo dice "¡Ja, ja, ja!" con la voz normal).
