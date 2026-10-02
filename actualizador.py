@@ -14,9 +14,11 @@ Uso:  python actualizador.py            (respeta [actualizaciones] automaticas e
 from __future__ import annotations
 
 import hashlib
+import html
 import io
 import json
 import os
+import re
 import shutil
 import ssl
 import subprocess
@@ -115,7 +117,38 @@ def pedir(url: str, tiempo: float, aceptar: str = "application/vnd.github+json")
 
 
 def ultima_version() -> tuple[str, str]:
-    """Devuelve (sha, mensaje del commit) de la última versión publicada."""
+    """Devuelve (sha, mensaje del commit) de la última versión publicada.
+
+    Primero pregunta a la API de GitHub; si pide esperar (límite de 60 consultas por hora) o
+    falla, prueba con el feed público de commits (no tiene ese límite).
+    """
+    try:
+        return _ultima_por_api()
+    except ErrorActualizacion as ex_api:
+        if "sin internet" in str(ex_api):
+            raise
+        try:
+            return _ultima_por_feed()
+        except ErrorActualizacion:
+            raise ex_api from None
+
+
+def _ultima_por_feed() -> tuple[str, str]:
+    url = f"https://github.com/{REPO}/commits/{RAMA}.atom"
+    try:
+        with pedir(url, TIEMPO_CONSULTA, aceptar="application/atom+xml") as r:
+            texto = r.read(2_000_000).decode("utf-8", "replace")
+    except (urllib.error.URLError, TimeoutError, OSError) as ex:
+        raise ErrorActualizacion("sin internet o GitHub no responde") from ex
+    entrada = texto.split("<entry>", 1)[1] if "<entry>" in texto else ""
+    m = re.search(r"Grit::Commit/([0-9a-f]{40})", entrada)
+    if not m:
+        raise ErrorActualizacion("GitHub devolvió una respuesta rara")
+    t = re.search(r"<title>\s*(.*?)\s*</title>", entrada, re.DOTALL)
+    return m.group(1), html.unescape(t.group(1)) if t else ""
+
+
+def _ultima_por_api() -> tuple[str, str]:
     url = f"https://api.github.com/repos/{REPO}/commits/{RAMA}"
     try:
         with pedir(url, TIEMPO_CONSULTA) as r:
@@ -138,7 +171,7 @@ def ultima_version() -> tuple[str, str]:
 
 
 def descargar(sha: str) -> bytes:
-    url = f"https://api.github.com/repos/{REPO}/zipball/{sha}"
+    url = f"https://codeload.github.com/{REPO}/zip/{sha}"   # descarga directa (sin límite de la API)
     try:
         with pedir(url, TIEMPO_DESCARGA, aceptar="*/*") as r:
             datos = r.read(TAMANO_MAXIMO + 1)
